@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # panda
 
 ## Project setup
