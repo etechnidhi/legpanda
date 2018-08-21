@@ -1,21 +1,21 @@
 <template>
-    <div id="home">
+    <div id="clendar">
         <Header/>
+        <CalendarForm/>
     </div>
 </template>
 
 <script>
 import Header from "./../components/Header.vue";
+import CalendarForm from "./../components/CalendarForm.vue";
 export default {
-  name: "Home",
+  name: "Calendar",
   components: {
-    Header
+    Header,
+    CalendarForm
   }
 };
 </script>
 
 <style>
-#home{
-  margin: 0 auto;
-}
 </style>

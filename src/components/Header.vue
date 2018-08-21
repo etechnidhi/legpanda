@@ -1,27 +1,70 @@
 <template>
-   <div id="Header">
-        <b-tabs>
-  <b-tab title="first" active>
-    <br>I'm the first fading tab
-   <icon name="sync" spin></icon>
-  </b-tab>
-  <b-tab title="second" >
-    <br>I'm the second tab content
-  </b-tab>
-  <b-tab title="disabled" >
-    <br>Disabled tab!
-  </b-tab>
-</b-tabs>
-   </div>
-
+    <div class="header">
+        <ul class="nav py-4">
+            <li class="nav-item w-25" @click="calendar">
+                <i class="fa fa-calendar fa-lg" aria-hidden="true"></i>
+                <a class="nav-link active" id="forColor" href="#!" style="text-decoration:none;">calendar</a>
+            </li>
+            <li class="nav-item w-25" @click="inquiries">
+                <i class="fa fa-envelope-open fa-lg" aria-hidden="true"></i>
+                <a class="nav-link" id="forColor" href="#!" style="text-decoration:none;">Inquiries</a>
+            </li>
+            <li class="nav-item w-25" @click="invoices">
+                <i class="fa fa-signal fa-lg"></i>
+                <a class="nav-link" id="forColor" href="#!" style="text-decoration:none;">Invoices</a>
+            </li>
+            <li class="nav-item w-25" @click="profile">
+                <i class="fa fa-user fa-lg" aria-hidden="true"></i>
+                <a class="nav-link " id="forColor" href="#!" style="text-decoration:none;">Profile</a>
+    
+            </li>
+        </ul>
+    </div>
 </template>
 
 <script>
 export default {
-name: "Header",
-}
+  name: "Header",
+  methods: {
+    calendar: function() {
+      this.$router.push("/calendar");
+    },
+    inquiries: function() {
+      this.$router.push("/inquiries");
+    },
+    invoices: function() {
+      this.$router.push("/invoices");
+    },
+    profile: function() {
+      this.$router.push("/profile");
+    }
+  }
+};
 </script>
 
 <style>
+.nav > li > i {
+  color: inherit !important;
+}
 
+.header .nav .nav-item {
+  color: gray;
+}
+
+.header .nav .nav-item:hover {
+  border-bottom-width: 4px;
+  border-bottom-style: solid;
+  border-bottom-color: #00ccb7;
+  color: #00ccb7 !important;
+  background-color: transparent !important;
+}
+
+forColor {
+  color: black !important;
+}
+
+.nav > li > #forColor {
+  border-radius: 0px;
+  color: inherit;
+}
 </style>

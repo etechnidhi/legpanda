@@ -1,19 +1,18 @@
 <template>
-    <h1>
-       <ForgotPasswordForm/>
-    </h1>
+    <div id="forgotPassword">
+        <ForgotPasswordForm/>
+    </div>
 </template>
 
 <script>
 import ForgotPasswordForm from "./../components/ForgotPasswordForm";
 export default {
-name: "forgotPassword",
-components:{
-ForgotPasswordForm
-}
-}
+  name: "forgotPassword",
+  components: {
+    ForgotPasswordForm
+  }
+};
 </script>
 
 <style>
-
 </style>

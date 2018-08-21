@@ -3,61 +3,87 @@
     <br/><br/>
     <div class="shadow p-3 mb-5 bg-white rounded w-50 ">
       <br/><br/>
-      <div class="form_container">
+      <div class="form_container" id="loginForm">
         <h3 class="text-lg-left font-weight-bold">Login</h3>
         <br/><br/>
-        <b-form>
-          <b-form-group id="exampleInputGroup1" label="E-Mail Address*" class="text-sm-left">
-            <b-form-input class="border border-dark border-top-0 border-right-0 border-left-0 rounded-0" type="email" v-model="email" required placeholder="Enter email">
-            </b-form-input>
-          </b-form-group>
-          <b-form-group id="exampleInputGroup2" label="Password*" class="text-sm-left">
-            <b-form-input id="exampleInput2" type="password" v-model="password"  required placeholder="Enter Password" class="border border-dark border-top-0 border-right-0 border-left-0 rounded-0">
-            </b-form-input>
-          </b-form-group>
-          <b-button type="button" @click="loginClick" class="button w-100 border-0 border-dark">Login</b-button>
-        </b-form>
+        <v-form>
+          <v-text-field v-model="email" label="E-Mail Address" :rules="emailRules" required></v-text-field>
+          <v-text-field v-model="password" label="Password" :rules="passwordlRules" required></v-text-field>
+          <b-button type="button" @click="loginClick"  class="button w-100 border-0 border-dark || { red: !valid, green: valid }">Login</b-button>
+        </v-form>  
         <div class="center-link">
-          <a href="#" @click="forgot">Forgot Password? Reset it!</a><br/>
+          <a href="#" @click="forgot">Forgot Password? Reset it!</a><br/><br/>
           <a href="#" @click="signup">No Account yet? Register Now</a>
         </div>
       </div>
     </div>
+     <!-- Alert Modal  -->
+      <div class="modal" v-bind:class="{ 'is-active': responseError }">
+        <div class="modal-background"></div>
+        <div class="modal-card ">
+          <header class="modal-card-head">
+            <p class="modal-card-title">Alert!</p>
+            <button class="delete" aria-label="close" ></button>
+          </header>
+          <section class="modal-card-body has-background-danger has-text-white-bis">
+            {{this.$store.state.login.messageError}}
+          </section>
+          <footer class="modal-card-foot">
+            <button class="button">OK</button>
+          </footer>
+        </div>
+      </div>
   </div>
 </template>
 
 <script>
-import { mapActions,mapGetters } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 import { mapFields } from "vuex-map-fields";
 export default {
   name: "LoginForm",
-  watch:{
-    getUser: function(val){
-      if(val.email){
-        this.$router.push("/Home");
+  data() {
+    return {
+      emailRules: [
+        v => !!v || "E-mail is required",
+        v =>
+          /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) ||
+          "E-mail must be valid"
+      ],
+      passwordlRules: [
+        v => !!v || "Password is required",
+        v => v.length >= 8 || "Password should be minimum of 8 characters",
+        v => v.length <= 12 || "Password should not exceed to 12 characters"
+      ]
+    };
+  },
+  watch: {
+    getUser: function(val) {
+      if (val.email) {
+        this.$router.push("/calendar");
       }
     }
   },
-  computed:{
+  computed: {
     ...mapGetters({
-      isLoggedIn:"isLoggedIn",
-      getUser: "getUser"
+      isLoggedIn: "isLoggedIn",
+      getUser: "getUser",
+      responseError: "responseError"
     }),
-...mapFields(["email", "password"]),
+    ...mapFields(["email", "password"])
   },
   methods: {
     ...mapActions(["login"]),
     signup: function() {
       this.$router.push("/signUp");
     },
-    forgot: function(){
+    forgot: function() {
       this.$router.push("/forgot");
     },
-    loginClick: function(){  
+    loginClick: function() {
       this.login({
-        email:this.email,
+        email: this.email,
         password: this.password
-      })
+      });
     }
   }
 };
@@ -90,5 +116,8 @@ h3 {
 a {
   text-decoration: underline;
   font-size: 15px !important;
+}
+#loginForm {
+  margin-bottom: 25px;
 }
 </style>
