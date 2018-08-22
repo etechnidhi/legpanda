@@ -1,7 +1,7 @@
 <template>
-    <div class="Signalment">
-        <SignalmentForm/>
-    </div>
+  <div class="Signalment">
+    <SignalmentForm/>
+  </div>
 </template>
 
 <script>

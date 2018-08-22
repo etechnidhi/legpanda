@@ -1,7 +1,7 @@
 <template>
-    <div class="mycv">
-        <MyCvForm/>
-    </div>
+  <div class="mycv">
+    <MyCvForm/>
+  </div>
 </template>
 
 <script>

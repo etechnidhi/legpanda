@@ -1,7 +1,7 @@
 <template>
-    <div id="forgotPassword">
-        <ForgotPasswordForm/>
-    </div>
+  <div id="forgotPassword">
+    <ForgotPasswordForm/>
+  </div>
 </template>
 
 <script>

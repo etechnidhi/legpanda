@@ -1,8 +1,8 @@
 <template>
-    <div id="clendar">
-        <Header/>
-        <CalendarForm/>
-    </div>
+  <div id="clendar">
+    <Header/>
+    <CalendarForm/>
+  </div>
 </template>
 
 <script>

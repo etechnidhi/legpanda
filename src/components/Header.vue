@@ -1,25 +1,25 @@
 <template>
-    <div class="header">
-        <ul class="nav py-4">
-            <li class="nav-item w-25" @click="calendar">
-                <i class="fa fa-calendar fa-lg" aria-hidden="true"></i>
-                <a class="nav-link active" id="forColor" href="#!" style="text-decoration:none;">calendar</a>
-            </li>
-            <li class="nav-item w-25" @click="inquiries">
-                <i class="fa fa-envelope-open fa-lg" aria-hidden="true"></i>
-                <a class="nav-link" id="forColor" href="#!" style="text-decoration:none;">Inquiries</a>
-            </li>
-            <li class="nav-item w-25" @click="invoices">
-                <i class="fa fa-signal fa-lg"></i>
-                <a class="nav-link" id="forColor" href="#!" style="text-decoration:none;">Invoices</a>
-            </li>
-            <li class="nav-item w-25" @click="profile">
-                <i class="fa fa-user fa-lg" aria-hidden="true"></i>
-                <a class="nav-link " id="forColor" href="#!" style="text-decoration:none;">Profile</a>
-    
-            </li>
-        </ul>
-    </div>
+  <div class="header">
+    <ul class="nav py-4">
+      <li class="nav-item w-25" @click="calendar">
+        <i class="fa fa-calendar fa-lg" aria-hidden="true"></i>
+        <a class="nav-link active" id="forColor" href="#!" style="text-decoration:none;">calendar</a>
+      </li>
+      <li class="nav-item w-25" @click="inquiries">
+        <i class="fa fa-envelope-open fa-lg" aria-hidden="true"></i>
+        <a class="nav-link" id="forColor" href="#!" style="text-decoration:none;">Inquiries</a>
+      </li>
+      <li class="nav-item w-25" @click="invoices">
+        <i class="fa fa-signal fa-lg"></i>
+        <a class="nav-link" id="forColor" href="#!" style="text-decoration:none;">Invoices</a>
+      </li>
+      <li class="nav-item w-25" @click="profile">
+        <i class="fa fa-user fa-lg" aria-hidden="true"></i>
+        <a class="nav-link " id="forColor" href="#!" style="text-decoration:none;">Profile</a>
+  
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
@@ -61,6 +61,10 @@ export default {
 
 forColor {
   color: black !important;
+}
+
+.nav-item {
+  text-align: center;
 }
 
 .nav > li > #forColor {

@@ -4,8 +4,10 @@
             <div class="container my-5">
                 <div class="profileContainer">
     
-                    <div>
-                        <h2 class="text-left font-weight-bold" id="makeMargin">asd asd</h2>
+                    <div class="myContainerProfile">
+                        <div class="myLeft">
+                            <h2 class="text-left font-weight-bold" id="profileName">asd asd</h2>
+                        </div>
                         <div class="myRight">
                             <i class="fa fa-picture-o fa-3x" aria-hidden="true"></i>
                         </div>
@@ -61,7 +63,7 @@ export default {
     },
     logout: function() {
       this.dologout();
-      this.$router.push("/");
+      this.$router.push("login");
     }
   }
 };
@@ -72,18 +74,21 @@ export default {
   margin-top: 190px !important;
 }
 
-#makeMargin {
-  margin-left: 15px;
+.myRight {
+  float: right;
 }
 
-.myRight {
-  width: 25%;
-  float: right;
-  margin-top: -40px !important;
+.myLeft {
+  width: 100%;
 }
 
 i {
   color: #a9a9a9 !important;
+}
+
+.myContainerProfile {
+  width: 100%;
+  display: flex;
 }
 
 .profileContainer {
@@ -93,5 +98,21 @@ i {
 
 #ulList {
   margin-top: 80px !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .myContainerProfile {
+    display: block;
+  }
+  #profileName {
+    text-align: center !important;
+  }
+  .myRight {
+    float: none;
+    text-align: center;
+  }
+  #ulList {
+    margin-top: 45px !important;
+  }
 }
 </style>

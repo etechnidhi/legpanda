@@ -6,7 +6,7 @@
                     <h3 class="text-lg-left font-weight-bold">My CV</h3>
                     <div class="signalmentContainer">
                         <p class="paragraph"> When did you finish your professional education and when did you start to work as a freelancer?</p>
-                        <b-row>
+                        <b-row id="cvRow">
                             <b-col>
                                 <v-select label="Professional Since"></v-select>
                             </b-col>
@@ -22,8 +22,8 @@
                         </div>
                         <div class="secondAddinional">
                             <v-form class="form">
-                                <v-text-field v-model="email" label="Name of my employer" required></v-text-field>
-                                <b-row>
+                                <v-text-field label="Name of my employer" required></v-text-field>
+                                <b-row id="cvRow">
                                     <b-col>
                                         <v-select class="text-sm-left" label="City"></v-select>
                                     </b-col>
@@ -39,7 +39,7 @@
                     </div>
     
                     <div class="add" @click="add">
-                        Add additional employer
+                        <a class="employerAdder" href="#">Add additional employer</a>
                     </div>
                     <b-button type="submit" class="button w-100 border-0 border-dark" id="buttonId">Save</b-button>
                 </div>
@@ -78,6 +78,20 @@ export default {
 .add {
   margin-bottom: 30px;
   margin-top: 25px;
+  text-align: center;
+}
+
+#buttonId {
+  font-size: 15px;
+}
+
+.employerAdder {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  color: #a9a9a9;
 }
 
 .boxAdditional {
@@ -101,5 +115,14 @@ export default {
 
 .form {
   margin-top: 50px;
+}
+
+@media only screen and (max-width: 600px) {
+  #cvRow {
+    display: block;
+  }
+  #buttonId {
+    font-size: 10px;
+  }
 }
 </style>

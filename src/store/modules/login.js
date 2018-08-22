@@ -22,11 +22,11 @@ export default {
   actions: {
     async login({ commit }, payload) {
       commit("login", payload);
-      commit("blankform", "");
+      commit("blankform");
     },
     async signup({ commit }, payload) {
-      commit("signUp", payload);
-      commit("blankform", "");
+      commit("signUpForm", payload);
+      commit("blankform");
     },
     logout({ commit }) {
       commit("logout");
@@ -35,27 +35,17 @@ export default {
   mutations: {
     updateField,
     login: (state, data) => {
-      for (var i = 0; i <= state.users.length; i++) {
-        if (
-          state.users[i].email == data.email ||
-          state.users[i].password == data.password
-        ) {
-          state.userObject = data;
-        } else {
-          state.error = true;
-          state.messageError = "Invalid Name or Password";
-        }
-      }
+      state.userObject = data;
     },
-    signUp: (state, data) => {
+    signUpForm: (state, data) => {
       state.users.push(data);
     },
-    blankform: (state, data) => {
-      (state.email = data),
-        (state.password = data),
-        (state.fName = data),
-        (state.lName = data),
-        (state.mobile = data);
+    blankform: state => {
+      state.email = "";
+      state.password = "";
+      state.fName = "";
+      state.lName = "";
+      state.mobile = "";
     },
     logout: state => {
       state.user = {};

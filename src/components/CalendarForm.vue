@@ -1,33 +1,33 @@
 <template>
-    <div id="CalendarForm">
-        <div class="shadow p-3 mb-5 bg-white rounded w-50" id="shadowDiv">
-            <div class="container my-5">
-                <div class="form_container">
-                    <div class="notification">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
-                    </div>
-                    <v-select class="text-lg-left font-weight-bold" :items="months"></v-select>
-                    <ul class="list-group list-group-flush text-left" id="calenderList" v-for="(key,index) in dates" :key="index">
-                        <div class="content">
-                            <div class="leftContent">
-                                <div class="leftContentLeft">
-                                    <h5>{{key}}
-                                        <div style="width: 10%;">Mo</div>
-                                    </h5>
-                                </div>
-    
-                                <h5 style="margin-left: 20px;">Available</h5>
-                            </div>
-                            <div class="rightContent">
-                                <h3 class="plusFloat">+</h3>
-                            </div>
-                        </div>
-                    </ul>
-                    <b-button type="submit" class="button w-100 border-0 border-dark" id="buttonId">Save</b-button>
+  <div id="CalendarForm">
+    <div class="shadow p-3 mb-5 bg-white rounded w-50" id="shadowDiv">
+      <div class="container my-5">
+        <div class="form_container">
+          <div class="notification">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+          </div>
+          <v-select class="text-lg-left font-weight-bold" :items="months" label="Month"></v-select>
+          <ul class="list-group list-group-flush text-left" id="calenderList" v-for="(key,index) in dates" :key="index">
+            <div class="content">
+              <div class="leftContent">
+                <div class="leftContentLeft">
+                  <h5 id="dateNday">{{key}}
+                    <div style="width: 10%;">Mo</div>
+                  </h5>
                 </div>
+  
+                <h5 style="margin-left: 20px;" id="available">Available</h5>
+              </div>
+              <div class="rightContent">
+                <h3 class="plusFloat">+</h3>
+              </div>
             </div>
+          </ul>
+          <b-button type="submit" class="button w-100 border-0 border-dark" id="buttonIdCalendar">Save</b-button>
         </div>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
@@ -35,13 +35,56 @@ export default {
   name: "CalendarForm",
   data: () => ({
     months: [
-      "January","Febraury","March","April","May","June","Jully","August","September","October","November","December"
+      "January",
+      "Febraury",
+      "March",
+      "April",
+      "May",
+      "June",
+      "Jully",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
     ],
     dates: [
-      "1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18",
-      "19","20","21","21","22","23","24","25","26","27","28"
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "20",
+      "21",
+      "21",
+      "22",
+      "23",
+      "24",
+      "25",
+      "26",
+      "27",
+      "28"
     ]
-  })
+  }),
+  beforeMount() {
+    if (!this.$store.state.login.userObject.email) {
+      this.$router.push("login");
+    }
+  }
 };
 </script>
 
@@ -82,5 +125,39 @@ export default {
 .content {
   display: flex;
   border-bottom: 1px solid grey;
+}
+
+#buttonIdCalendar {
+  font-size: 15px;
+}
+
+@media only screen and (max-width: 600px) {
+  .notification {
+    padding-left: 0px;
+    text-align: center;
+    padding-right: 0px;
+  }
+  #dateNday {
+    display: flex;
+    font-size: 15px;
+  }
+  .content {
+    display: block;
+  }
+  .rightContent {
+    width: auto;
+    margin-right: 0px;
+  }
+  #available {
+    font-size: 15px;
+    margin-left: 10px !important;
+  }
+  #buttonIdCalendar {
+    font-size: 10px;
+  }
+  .w-50{
+    width: 100% !important;
+    box-shadow: unset;
+  }
 }
 </style>
