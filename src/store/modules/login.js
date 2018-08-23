@@ -35,7 +35,18 @@ export default {
   mutations: {
     updateField,
     login: (state, data) => {
-      state.userObject = data;
+      for (var i = 0; i < state.users.length; i++) {
+        if (
+          state.users[i].email == data.email &&
+          state.users[i].password == data.password
+        ) {
+          state.userObject = data;
+          state.error = false;
+        } else {
+          state.error = true;
+          state.messageError = "Invalid id or password";
+        }
+      }
     },
     signUpForm: (state, data) => {
       state.users.push(data);
@@ -48,7 +59,7 @@ export default {
       state.mobile = "";
     },
     logout: state => {
-      state.user = {};
+      state.userObject = {};
     }
   }
 };

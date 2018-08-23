@@ -64,6 +64,11 @@ export default {
     closeButton: function() {
       this.additional = false;
     }
+  },
+  beforeMount() {
+    if (!this.$store.state.login.userObject.email) {
+      this.$router.push("login");
+    }
   }
 };
 </script>

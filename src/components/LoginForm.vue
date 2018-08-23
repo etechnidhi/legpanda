@@ -9,29 +9,15 @@
         <v-form v-model="valid" ref="form">
           <v-text-field v-model="email" label="E-Mail Address" :rules="emailRules" required></v-text-field>
           <v-text-field v-model="password" type="password" label="Password" :rules="passwordlRules" required></v-text-field>
-          <h1></h1>
+          <v-alert :value="responseError" type="error">
+            {{this.$store.state.login.messageError}}
+          </v-alert>
           <b-button type="button" @click="loginClick" :loading="loading" :disabled="!valid" class="button w-100 border-0 border-dark" id="loginButton">Login</b-button>
         </v-form>
         <div class="center-link">
           <a href="#" @click="forgot">Forgot Password? Reset it!</a><br/><br/>
           <a href="#" @click="signup">No Account yet? Register Now</a>
         </div>
-      </div>
-    </div>
-    <!-- Alert Modal  -->
-    <div class="modal" v-bind:class="{ 'is-active': responseError }">
-      <div class="modal-background"></div>
-      <div class="modal-card ">
-        <header class="modal-card-head">
-          <p class="modal-card-title">Alert!</p>
-          <button class="delete" aria-label="close"></button>
-        </header>
-        <section class="modal-card-body has-background-danger has-text-white-bis">
-          {{this.$store.state.login.messageError}}
-        </section>
-        <footer class="modal-card-foot">
-          <button class="button">OK</button>
-        </footer>
       </div>
     </div>
   </div>
@@ -90,6 +76,11 @@ export default {
         password: this.password
       });
     }
+  },
+  beforeMount(){
+    if(this.$store.state.login.userObject.email){
+      this.$router.push("calendar");
+    }
   }
 };
 </script>
@@ -136,15 +127,19 @@ a {
   font-size: 15px;
 }
 
+.v-alert.v-alert {
+  background: #ef5350 !important;
+}
+
 @media only screen and (max-width: 600px) {
   #loginButton {
     font-size: 10px;
   }
-  .w-50{
+  .w-50 {
     width: 100% !important;
     box-shadow: unset !important;
   }
-  .v-form{
+  .v-form {
     text-align: center;
   }
 }

@@ -17,7 +17,12 @@
 
 <script>
 export default {
-  name: "AboutMe"
+  name: "AboutMe",
+  beforeMount() {
+    if (!this.$store.state.login.userObject.email) {
+      this.$router.push("login");
+    }
+  }
 };
 </script>
 

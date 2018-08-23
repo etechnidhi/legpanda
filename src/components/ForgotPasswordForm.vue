@@ -3,9 +3,9 @@
     <br/><br/>
     <div class="shadow p-3 mb-5 bg-white rounded w-50 " id="shadowBox">
       <div class="myEmail">
-        <v-form>
-          <v-text-field label="E-Mail Address*" required></v-text-field>
-          <b-button type="submit" class="button w-100 border-0 border-dark" id="ResetButton">Reset Password</b-button>
+        <v-form v-model="valid" ref="form">
+          <v-text-field label="E-Mail Address*" :rules="emailRules" required></v-text-field>
+          <b-button type="submit" :disabled="!valid" class="button w-100 border-0 border-dark" id="ResetButton" @click="forgotPassword">Reset Password</b-button>
         </v-form>
       </div>
     </div>
@@ -13,16 +13,29 @@
 </template>
 
 <script>
+import { mapFields } from "vuex-map-fields";
 export default {
   name: "ForgotPasswordForm",
   data() {
     return {
-      form: {
-        email: "",
-        name: ""
-      },
+      valid: false,
+        emailRules: [
+        v => !!v || "E-mail is required",
+        v =>
+          /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) ||
+          "E-mail must be valid"
+      ],
       show: true
     };
+  },
+  computed:{
+    ...mapFields(["email"])
+  },
+  methods:{
+    forgotPassword: function(){
+      this.$refs.form.validate();
+      this.$router.push("/login");
+    }
   }
 };
 </script>

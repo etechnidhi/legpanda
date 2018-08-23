@@ -38,6 +38,11 @@ export default {
     profile: function() {
       this.$router.push("/profile");
     }
+  },
+  beforeMount() {
+    if (!this.$store.state.login.userObject.email) {
+      this.$router.push("login");
+    }
   }
 };
 </script>

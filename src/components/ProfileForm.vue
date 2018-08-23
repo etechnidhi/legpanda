@@ -65,6 +65,11 @@ export default {
       this.dologout();
       this.$router.push("login");
     }
+  },
+  beforeMount() {
+    if (!this.$store.state.login.userObject.email) {
+      this.$router.push("login");
+    }
   }
 };
 </script>

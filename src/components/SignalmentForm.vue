@@ -45,7 +45,12 @@
 
 <script>
 export default {
-  name: "SignalmentForm"
+  name: "SignalmentForm",
+  beforeMount() {
+    if (!this.$store.state.login.userObject.email) {
+      this.$router.push("login");
+    }
+  }
 };
 </script>
 

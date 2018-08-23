@@ -112,7 +112,7 @@ export default {
 }
 
 .leftContent {
-  width: 50%;
+  width: 100%;
   display: flex;
 }
 
@@ -141,16 +141,13 @@ export default {
     display: flex;
     font-size: 15px;
   }
-  .content {
-    display: block;
-  }
   .rightContent {
     width: auto;
     margin-right: 0px;
   }
   #available {
     font-size: 15px;
-    margin-left: 10px !important;
+    margin-left: 20px !important;
   }
   #buttonIdCalendar {
     font-size: 10px;
