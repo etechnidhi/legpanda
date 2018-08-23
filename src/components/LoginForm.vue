@@ -61,7 +61,7 @@ export default {
     ...mapFields(["email", "password"])
   },
   methods: {
-    ...mapActions(["login"]),
+    ...mapActions(["login","errorBlank"]),
     signup: function() {
       this.$router.push("/signUp");
     },
@@ -80,6 +80,12 @@ export default {
   beforeMount(){
     if(this.$store.state.login.userObject.email){
       this.$router.push("calendar");
+    }
+    if(this.$store.state.login.error){
+      this.errorBlank({
+        error : false,
+        message: "" 
+      })
     }
   }
 };

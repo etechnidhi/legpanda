@@ -50,7 +50,7 @@ export default {
   name: "ProfileForm",
   methods: {
     ...mapActions({
-      dologout: "logout"
+      dologout: "logout",sendId:"sendId"
     }),
     aboutMe: function() {
       this.$router.push("/aboutMe");
@@ -70,6 +70,7 @@ export default {
     if (!this.$store.state.login.userObject.email) {
       this.$router.push("login");
     }
+    this.sendId(4)
   }
 };
 </script>

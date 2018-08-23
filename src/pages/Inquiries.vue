@@ -16,11 +16,21 @@
 </template>
 
 <script>
+import { mapActions} from "vuex";
 import Header from "./../components/Header.vue";
 export default {
   name: "Inquiries",
   components: {
     Header
+  },
+  methods:{
+       ...mapActions(["sendId"])
+  },
+  beforeMount() {
+    if (!this.$store.state.login.userObject.email) {
+      this.$router.push("login");
+    }
+    this.sendId(2)
   }
 };
 </script>

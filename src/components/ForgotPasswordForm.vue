@@ -36,6 +36,11 @@ export default {
       this.$refs.form.validate();
       this.$router.push("/login");
     }
+  },
+  beforeMount(){
+    if(this.$store.state.login.userObject.email){
+      this.$router.push("calendar");
+    }
   }
 };
 </script>

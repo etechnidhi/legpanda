@@ -97,6 +97,11 @@ export default {
         mobile: this.mobile
       });
     }
+  },
+  beforeMount(){
+    if(this.$store.state.login.userObject.email){
+      this.$router.push("calendar");
+    }
   }
 };
 </script>

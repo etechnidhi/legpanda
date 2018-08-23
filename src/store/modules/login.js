@@ -10,14 +10,16 @@ export default {
     mobile: "", //mobile field for updateField
     userObject: {}, //contains the loggedin user
     messageError: "", //contain message error
-    error: false //true the error modal
+    error: false, //true the error modal
+    currentPage: "",
   },
   getters: {
     getField,
     getValid: state => (state.valid ? true : false),
     getUser: state => state.userObject,
     responseError: state => (state.error ? true : false),
-    isLoggedIn: state => (state.email ? true : false)
+    isLoggedIn: state => (state.email ? true : false),
+    setCurrentPage: state => state.currentPage
   },
   actions: {
     async login({ commit }, payload) {
@@ -30,11 +32,20 @@ export default {
     },
     logout({ commit }) {
       commit("logout");
+    },
+    sendId({commit},payload){
+      commit("setId",payload);      
+    },
+    errorBlank({commit},payload){
+      commit("noError",payload);
+      
     }
   },
   mutations: {
     updateField,
     login: (state, data) => {
+      state.error = false;
+      state.messageError ="";
       for (var i = 0; i < state.users.length; i++) {
         if (
           state.users[i].email == data.email &&
@@ -42,6 +53,7 @@ export default {
         ) {
           state.userObject = data;
           state.error = false;
+          state.currentPage = 1;
         } else {
           state.error = true;
           state.messageError = "Invalid id or password";
@@ -60,6 +72,14 @@ export default {
     },
     logout: state => {
       state.userObject = {};
+      state.currentPage = "";
+    },
+    setId: (state,data)=>{
+      state.currentPage = data;
+    },
+    noError: (state,data)=>{
+      state.error = data.error;
+      state.messageError = data.message;
     }
   }
 };
