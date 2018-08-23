@@ -44,12 +44,17 @@
 </template>
 
 <script>
+import { mapActions} from "vuex";
 export default {
   name: "SignalmentForm",
+  methods:{
+      ...mapActions(["sendId"])
+  },
   beforeMount() {
     if (!this.$store.state.login.userObject.email) {
       this.$router.push("login");
     }
+    this.sendId(4)
   }
 };
 </script>

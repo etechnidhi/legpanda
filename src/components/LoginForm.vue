@@ -124,11 +124,6 @@ a {
 #loginForm {
   margin-bottom: 25px;
 }
-
-.v-messages__message {
-  color: red !important;
-}
-
 #loginButton {
   font-size: 15px;
 }

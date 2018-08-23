@@ -50,6 +50,7 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   name: "MyCvForm",
   data() {
@@ -58,6 +59,7 @@ export default {
     };
   },
   methods: {
+    ...mapActions(["sendId"]),
     add: function() {
       this.additional = true;
     },
@@ -69,6 +71,7 @@ export default {
     if (!this.$store.state.login.userObject.email) {
       this.$router.push("login");
     }
+    this.sendId(4)
   }
 };
 </script>

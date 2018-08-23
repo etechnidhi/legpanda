@@ -1,5 +1,6 @@
 <template>
     <div class="aboutMe">
+      <Header/>
         <div class="shadow p-3 mb-5 bg-white rounded w-50" id="shadowDiv">
             <div class="container my-5">
                 <div class="form_container">
@@ -16,12 +17,21 @@
 </template>
 
 <script>
+import Header from "./../components/Header.vue";
+import { mapActions} from "vuex";
 export default {
   name: "AboutMe",
+  components: {
+    Header,
+  },
+  methods:{
+...mapActions(["sendId"])
+  },
   beforeMount() {
     if (!this.$store.state.login.userObject.email) {
       this.$router.push("login");
     }
+    this.sendId(4)
   }
 };
 </script>

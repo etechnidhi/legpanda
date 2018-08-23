@@ -11,7 +11,7 @@ export default {
     userObject: {}, //contains the loggedin user
     messageError: "", //contain message error
     error: false, //true the error modal
-    currentPage: "",
+    currentPage: ""
   },
   getters: {
     getField,
@@ -33,24 +33,20 @@ export default {
     logout({ commit }) {
       commit("logout");
     },
-    sendId({commit},payload){
-      commit("setId",payload);      
+    sendId({ commit }, payload) {
+      commit("setId", payload);
     },
-    errorBlank({commit},payload){
-      commit("noError",payload);
-      
+    errorBlank({ commit }, payload) {
+      commit("noError", payload);
     }
   },
   mutations: {
     updateField,
     login: (state, data) => {
       state.error = false;
-      state.messageError ="";
-      for (var i = 0; i < state.users.length; i++) {
-        if (
-          state.users[i].email == data.email &&
-          state.users[i].password == data.password
-        ) {
+      state.messageError = "";
+      state.users.forEach(function(value) {
+        if (value.email == data.email && value.password == data.password) {
           state.userObject = data;
           state.error = false;
           state.currentPage = 1;
@@ -58,7 +54,7 @@ export default {
           state.error = true;
           state.messageError = "Invalid id or password";
         }
-      }
+      });
     },
     signUpForm: (state, data) => {
       state.users.push(data);
@@ -74,10 +70,10 @@ export default {
       state.userObject = {};
       state.currentPage = "";
     },
-    setId: (state,data)=>{
+    setId: (state, data) => {
       state.currentPage = data;
     },
-    noError: (state,data)=>{
+    noError: (state, data) => {
       state.error = data.error;
       state.messageError = data.message;
     }

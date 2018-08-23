@@ -1,19 +1,19 @@
 <template>
   <div class="header">
     <ul class="nav py-4">
-      <li class="nav-item w-25"  v-bind:class="{ active: (setCurrentPage === 1)}" @click="calendar" id="calendar">
+      <li class="nav-item w-25"  v-bind:class="{ active: (setCurrentPage === 1)}" @click="calendar">
         <i class="fa fa-calendar fa-lg" aria-hidden="true"></i>
         <a class="nav-link active" id="forColor" href="#!" style="text-decoration:none;">calendar</a>
       </li>
-      <li class="nav-item w-25" v-bind:class="{ active: (setCurrentPage === 2)}" @click="inquiries" id="inquiries">
+      <li class="nav-item w-25" v-bind:class="{ active: (setCurrentPage === 2)}" @click="inquiries">
         <i class="fa fa-envelope-open fa-lg" aria-hidden="true"></i>
         <a class="nav-link" id="forColor" href="#!" style="text-decoration:none;">Inquiries</a>
       </li>
-      <li class="nav-item w-25" @click="invoices" id="invoices" v-bind:class="{ active: (setCurrentPage === 3)}">
+      <li class="nav-item w-25" @click="invoices" v-bind:class="{ active: (setCurrentPage === 3)}">
         <i class="fa fa-signal fa-lg"></i>
         <a class="nav-link" id="forColor" href="#!" style="text-decoration:none;">Invoices</a>
       </li>
-      <li class="nav-item w-25" @click="profile" id="profile" v-bind:class="{ active: (setCurrentPage === 4)}">
+      <li class="nav-item w-25" @click="profile" v-bind:class="{ active: (setCurrentPage === 4)}">
         <i class="fa fa-user fa-lg" aria-hidden="true"></i>
         <a class="nav-link " id="forColor" href="#!" style="text-decoration:none;">Profile</a>
   
